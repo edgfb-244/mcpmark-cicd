@@ -1,0 +1,38 @@
+name: Code Linting
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Install ESLint globally
+        run: npm install -g eslint
+      
+      - name: Run ESLint
+        run: eslint src/**/*.js
+      
+      - name: Check for linting errors
+        run: |
+          if [ $? -ne 0 ]; then
+            echo "Linting errors found. Please fix them before merging."
+            exit 1
+          fi
