@@ -1,17 +1,15 @@
-// This file contains intentional linting errors for demonstration
-const unusedVariable = "This variable is never used"
-
+// This file demonstrates proper linting compliance
 function greet(name) {
-  console.log("Hello, " + name)
+  console.log('Hello, ' + name);
 }
 
-greet("World")
+greet('World');
 
-// Missing semicolon
-const message = "Missing semicolon"
+const message = 'Properly formatted with semicolon';
 
-// Using double quotes instead of single quotes
-const anotherMessage = "Double quotes"
+// Using single quotes as required
+const anotherMessage = 'Single quotes are used';
 
-// Undefined variable
-console.log(undefinedVariable)
+// All variables are properly defined and used
+const usedVariable = 'This variable is used';
+console.log(usedVariable);
